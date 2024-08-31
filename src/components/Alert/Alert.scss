@@ -1,0 +1,83 @@
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='alert'] {
+	& .MuiPaper-root {
+		border-radius: var(--shape-large);
+	}
+
+	.container[data-component='alert'] {
+		width: 360px;
+		padding: var(--space);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space);
+
+		.top[data-component='alert'] {
+			animation: slide-forward var(--motion-medium) var(--emphasized);
+
+			svg {
+				height: 96px;
+				width: 96px;
+			}
+		}
+
+		.bottom[data-component='alert'] {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+
+			.title[data-component='alert'] {
+				display: block;
+				color: var(--on-surface);
+				text-align: center;
+			}
+
+			.text[data-component='alert'] {
+				display: block;
+				color: var(--on-surface-variant);
+				text-align: center;
+			}
+
+			.outlined-button[data-component='alert'] {
+				border-radius: var(--shape-extra-large);
+				margin: var(--space) 0 0 0;
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='alert'].success {
+	.container[data-component='alert'] {
+		.top[data-component='alert'] {
+			svg {
+				fill: var(--success);
+			}
+		}
+	}
+}
+
+.dialog[data-component='alert'].warning {
+	.container[data-component='alert'] {
+		.top[data-component='alert'] {
+			svg {
+				fill: var(--warning);
+			}
+		}
+	}
+}
+
+.dialog[data-component='alert'].error {
+	.container[data-component='alert'] {
+		.top[data-component='alert'] {
+			svg {
+				fill: var(--error);
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

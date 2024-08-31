@@ -1,0 +1,15 @@
+// -------------------------------------------------------------------------------------------
+
+:root {
+	--motion-extra-short: 75ms;
+	--motion-short: 150ms;
+	--motion-medium: 300ms;
+	--motion-long: 600ms;
+	--motion-extra-long: 1200ms;
+
+	--emphasized: cubic-bezier(0.2, 0, 0, 1);
+	--emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+	--emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+}
+
+// -------------------------------------------------------------------------------------------

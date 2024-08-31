@@ -1,0 +1,26 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='app-logo'] {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	.logo[data-component='app-logo'] {
+		height: 40px;
+		width: 40px;
+	}
+
+	&.light {
+		.title[data-component='app-logo'] {
+			color: var(--surface);
+		}
+	}
+
+	&.dark {
+		.title[data-component='app-logo'] {
+			color: var(--on-surface);
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

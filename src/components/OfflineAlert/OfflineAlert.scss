@@ -1,0 +1,19 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='offline-alert'] {
+	padding: var(--space);
+	width: 100vw;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: var(--error);
+	background-image: var(--gradient-4);
+	color: var(--on-error);
+	box-shadow: 0 -4px 2px var(--shadow);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	z-index: 5;
+}
+
+// -------------------------------------------------------------------------------------------
