@@ -1,29 +1,36 @@
+// -------------------------------------------------------------------------------------------
 
-import { AuthTokensInterface } from "../services/user/user.types";
+import { AuthTokensInterface } from '../services/user/user.types';
+
+// -------------------------------------------------------------------------------------------
 
 export const setTokens = ({
-    accessToken,
-    accessTokenExpiry,
-  
+	accessToken,
+	accessTokenExpiry,
+	refreshToken,
+	refreshTokenExpiry,
 }: AuthTokensInterface) => {
-    const key = import.meta.env.VITE_TOKEN_KEY;
+	let key = import.meta.env.VITE_TOKEN_KEY;
 
-    const value = JSON.stringify({
-        accessToken,
-        accessTokenExpiry,
-       
-    });
-    localStorage.setItem(key, value);
-}
-// ----------------------------------------------------------------
+	let value = JSON.stringify({
+		accessToken,
+		accessTokenExpiry,
+		refreshToken,
+		refreshTokenExpiry,
+	});
+
+	localStorage.setItem(key, value);
+};
+
+// -------------------------------------------------------------------------------------------
 
 export const getTokens = (): AuthTokensInterface | null => {
-	const key = import.meta.env.VITE_TOKEN_KEY;
+	let key = import.meta.env.VITE_TOKEN_KEY;
 
-	const value = localStorage.getItem(key) as string;
+	let value = localStorage.getItem(key) as string;
 
 	if (value) {
-		const tokens = JSON.parse(value) as AuthTokensInterface;
+		let tokens = JSON.parse(value) as AuthTokensInterface;
 
 		return tokens;
 	} else {
@@ -31,5 +38,4 @@ export const getTokens = (): AuthTokensInterface | null => {
 	}
 };
 
-// ------------------------------------------------------------------------
-
+// -------------------------------------------------------------------------------------------

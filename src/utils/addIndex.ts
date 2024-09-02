@@ -1,8 +1,21 @@
 
 
 export const addIndex = {
+
+	addIndex1: (array: any[]) => {
 	
-		addIndex1: (array: any[]) => {
+		const sortedArray = array.sort((a, b) => {
+		  return a.branchId - b.branchId;
+		});
+	
+		const indexedArray = sortedArray.map((value, index) => ({
+		  ...value,
+		  index: index + 1, 
+		}));
+	
+		return indexedArray;
+	  },
+		addIndex2: (array: any[]) => {
 		return array.map((value, index) => ({
 			...value,
 			index: index + 1,
@@ -10,7 +23,7 @@ export const addIndex = {
 	},
 
 
-	 addIndex2: (array: any[]) => {
+	 addIndex3: (array: any[]) => {
 		const total = array.length;
 		return array.map((value, index) => ({
 		  ...value,
@@ -18,6 +31,25 @@ export const addIndex = {
 		}));
 	  },
 
+	  addIndex4: (array: any[]) => {
+		return array
+		  .sort((a, b) => {
+			if (a.name < b.name) return -1;
+			if (a.name > b.name) return 1;
+			return 0;
+		  })
+		  .map((value, index) => ({
+			...value,
+			index: index + 1,
+		  }));
+	  },
+
+	  addIndex5: (array: any[]) => {
+		return array.map((value, index) => ({
+		  ...value,
+		  index: index === 0 ? array.length : index,
+		}));
+	},
 
   };
   

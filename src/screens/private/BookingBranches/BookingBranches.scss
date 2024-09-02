@@ -1,0 +1,105 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='booking-branches'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.top[data-component='booking-branches'] {
+		display: flex;
+		align-items: center;
+		gap: var(--space);
+		z-index: 0;
+	}
+
+	.bottom[data-component='booking-branches'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.table-container[data-component='booking-branches'] {
+			display: block;
+			border-radius: var(--shape-medium);
+			z-index: 0;
+		}
+	}
+}
+
+.fab-container[data-component='booking-branches'] {
+	position: fixed;
+	bottom: var(--space);
+	right: var(--space);
+	z-index: 1;
+}
+
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='booking-branches'] {
+	.dialog-title[data-component='booking-branches'] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.dialog-content[data-component='booking-branches'] {
+		display: flex;
+		gap: 16px;
+
+		.container[data-component='booking-branches'] {
+			display: flex;
+			gap: 16px;
+			padding: 8px 0 0 0;
+			flex-direction: row;
+
+			.column[data-component='booking-branches'] {
+				height: fit-content;
+				width: 33.33%;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				.region-input[data-component='delivery-branches'] {
+					display: flex;
+					gap: 16px;
+					.add-region-button {
+						height: 56px;
+						
+						width: 200px;
+						background-color: var(--primary-container);
+						color: var(--on-primary-container);
+					}
+				}
+			}
+		}
+	}
+
+	.text-button[data-component='booking-branches'] {
+		border-radius: var(--shape-extra-large);
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.dialog[data-component='booking-branches'] {
+		.dialog-title[data-component='booking-branches'] {
+			flex-direction: column;
+			align-items: start;
+			gap: var(--space);
+		}
+
+		.dialog-content[data-component='booking-branches'] {
+			.container[data-component='booking-branches'] {
+				flex-direction: column;
+
+				.column[data-component='booking-branches'] {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

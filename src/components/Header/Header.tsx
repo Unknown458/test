@@ -2,33 +2,33 @@
 
 import './Header.scss';
 
-// import { format } from 'date-fns';
-// import { MaterialReactTable, MRT_ColumnDef, useMaterialReactTable } from 'material-react-table';
+import { format } from 'date-fns';
+import { MaterialReactTable, MRT_ColumnDef, useMaterialReactTable } from 'material-react-table';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
-    ChevronLeftOutlined, ChevronRightOutlined, Logout, MenuOutlined, PersonOutline,
+    ChevronLeftOutlined, ChevronRightOutlined, EditOutlined, Logout, MenuOutlined, PersonOutline,
     Search, SearchOutlined
 } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import {
-    Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl,
+    Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, FormControl,
     IconButton, InputLabel, Menu, MenuItem, OutlinedInput, Tooltip, useMediaQuery, useTheme
 } from '@mui/material';
 
-// import RouterPath from '../../app/routerPath';
-// import { useApi } from '../../contexts/Api/Api';
+import RouterPath from '../../app/routerPath';
+import { useApi } from '../../contexts/Api/Api';
 import { useApp } from '../../contexts/App/App';
 import { useAuth } from '../../contexts/Auth/Auth';
-// import { getBookingDetailsAsync } from '../../services/booking/booking';
-// import { BookingInterface } from '../../services/booking/booking.types';
-// import { BillTypeInterface } from '../../services/branchLrNumber/branchLrNumber.types';
-// import { UserInterface } from '../../services/user/user.types';
-// import addIndex from '../../utils/addIndex';
-// import findObjectInArray from '../../utils/findObjectInArray';
+import { getBookingDetailsAsync } from '../../services/booking/booking';
+import { BookingInterface } from '../../services/booking/booking.types';
+import { BillTypeInterface } from '../../services/branchLrNumber/branchLrNumber.types';
+import { UserInterface } from '../../services/user/user.types';
+import addIndex from '../../utils/addIndex';
+import findObjectInArray from '../../utils/findObjectInArray';
 import Alert from '../Alert/Alert';
-import { AlertInterface } from '../Alert/Alert.types';
+import { AlertInterface, AlertStates } from '../Alert/Alert.types';
 import { HeaderInterface } from './Header.types';
 
 // -------------------------------------------------------------------------------------------
@@ -58,48 +58,48 @@ const getMenuIcon = (navigationState: string, windowWidth: number) => {
 // -------------------------------------------------------------------------------------------
 
 const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
-	// const { getUserDetails, getBillTypes } = useApi();
-	// const navigate = useNavigate();
+	const { getUserDetails, getBillTypes } = useApi();
+	const navigate = useNavigate();
 	const [isSearchLrNumberDialogOpen, setIsSearchLrNumberDialogOpen] =
 		useState(false);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const { title } = useApp();
 	const { handleLogout } = useAuth();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	// const [user, setUser] = useState<UserInterface>();
+	const [user, setUser] = useState<UserInterface>();
 	const [alertDialog, setAlertDialog] = useState<AlertInterface>({
 		state: 'success',
 		label: '',
 		isActive: false,
 	});
-	// const [billTypes, _setBillTypes] = useState<BillTypeInterface[]>([]);
+	const [billTypes, _setBillTypes] = useState<BillTypeInterface[]>([]);
 
 	const updateWindowWidth = useCallback(() => {
 		setWindowWidth(window.innerWidth);
 	}, []);
 	const [searchInput, setSearchInput] = useState<string>('');
-	// const [isLoading, setIsLoading] = useState(false);
-	// const [bookingDetails, setBookingDetails] = useState<BookingInterface[]>(
-	// 	[]
-	// );
+	const [isLoading, setIsLoading] = useState(false);
+	const [bookingDetails, setBookingDetails] = useState<BookingInterface[]>(
+		[]
+	);
 	const [isFormDialogOpen, setIsFormDialogOpen] = useState(false);
 
 	const theme = useTheme();
 	const isDialogFullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-	// useEffect(() => {
-	// 	initialFetch();
-	// }, []);
+	useEffect(() => {
+		initialFetch();
+	}, []);
 
-	// const initialFetch = useCallback(async () => {
-	// 	const userData = await getUserDetails();
-	// 	const billTypesData = await getBillTypes();
+	const initialFetch = useCallback(async () => {
+		const userData = await getUserDetails();
+		const billTypesData = await getBillTypes();
 
-	// 	if (userData && billTypesData.length !== 0) {
-	// 		setUser(userData);
-	// 		_setBillTypes(billTypesData);
-	// 	}
-	// }, [getUserDetails, billTypes]);
+		if (userData && billTypesData.length !== 0) {
+			setUser(userData);
+			_setBillTypes(billTypesData);
+		}
+	}, [getUserDetails, billTypes]);
 
 	useEffect(() => {
 		window.addEventListener('resize', updateWindowWidth);
@@ -133,13 +133,13 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 		setIsSearchLrNumberDialogOpen(false);
 	}, []);
 
-	// const handleOpenAlertDialog = (state: AlertStates, label: string) => {
-	// 	setAlertDialog({
-	// 		state: state,
-	// 		label: label,
-	// 		isActive: true,
-	// 	});
-	// };
+	const handleOpenAlertDialog = (state: AlertStates, label: string) => {
+		setAlertDialog({
+			state: state,
+			label: label,
+			isActive: true,
+		});
+	};
 
 	const handleCloseAlertDialog = () => {
 		setAlertDialog({
@@ -149,289 +149,289 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 		});
 	};
 
-	// const handleFormDialogOpen = () => {
-	// 	setIsFormDialogOpen(true);
-	// };
+	const handleFormDialogOpen = () => {
+		setIsFormDialogOpen(true);
+	};
 
 	const handleFormDialogClose = () => {
 		setIsFormDialogOpen(false);
 		setSearchInput('');
-		// setBookingDetails([]);
+		setBookingDetails([]);
 	};
 
-	// const handleGetBookingDetails = useCallback(async () => {
-	// 	if (searchInput) {
-	// 		const data = {
-	// 			fromBranchId: user?.branchId,
-	// 			lrNumber: +searchInput,
-	// 		};
+	const handleGetBookingDetails = useCallback(async () => {
+		if (searchInput) {
+			const data = {
+				fromBranchId: user?.branchId,
+				lrNumber: +searchInput,
+			};
 
-	// 		setIsLoading(true);
+			setIsLoading(true);
 
-	// 		const response = await getBookingDetailsAsync(data);
+			const response = await getBookingDetailsAsync(data);
 
-	// 		setIsLoading(false);
+			setIsLoading(false);
 
-	// 		if (
-	// 			response &&
-	// 			typeof response !== 'boolean' &&
-	// 			response.data.status !== 401
-	// 		) {
-	// 			if (
-	// 				response.data.status === 200 &&
-	// 				response.data.data.length !== 0
-	// 			) {
-	// 				const data: BookingInterface[] =
-	// 					response.data.data.reverse();
+			if (
+				response &&
+				typeof response !== 'boolean' &&
+				response.data.status !== 401
+			) {
+				if (
+					response.data.status === 200 &&
+					response.data.data.length !== 0
+				) {
+					const data: BookingInterface[] =
+						response.data.data.reverse();
 
-	// 				if (data.length === 1) {
-	// 					navigate(RouterPath.Booking, {
-	// 						state: {
-	// 							bookingDetails: data[0],
-	// 						},
-	// 					});
+					if (data.length === 1) {
+						navigate(RouterPath.Booking, {
+							state: {
+								bookingDetails: data[0],
+							},
+						});
 
-	// 					setSearchInput('');
-	// 				} else {
-	// 					handleFormDialogOpen();
-	// 					setBookingDetails(addIndex.addIndex2(data));
-	// 				}
-	// 			} else {
-	// 				handleOpenAlertDialog('warning', 'No booking found.');
-	// 			}
-	// 		} else {
-	// 			handleLogout();
-	// 		}
-	// 	} else {
-	// 		handleOpenAlertDialog('warning', 'Please enter LR Number');
-	// 	}
-	// }, [searchInput, bookingDetails]);
+						setSearchInput('');
+					} else {
+						handleFormDialogOpen();
+						setBookingDetails(addIndex.addIndex2(data));
+					}
+				} else {
+					handleOpenAlertDialog('warning', 'No booking found.');
+				}
+			} else {
+				handleLogout();
+			}
+		} else {
+			handleOpenAlertDialog('warning', 'Please enter LR Number');
+		}
+	}, [searchInput, bookingDetails]);
 
-	// const onEnter = (event: any) => {
-	// 	if (event.key === 'Enter') {
-	// 		handleGetBookingDetails();
-	// 	}
-	// };
+	const onEnter = (event: any) => {
+		if (event.key === 'Enter') {
+			handleGetBookingDetails();
+		}
+	};
 
-	// const columnsWithBillType = useMemo<MRT_ColumnDef<BookingInterface>[]>(
-	// 	() => [
-	// 		{
-	// 			accessorKey: 'index',
-	// 			header: '#',
-	// 			enableResizing: false,
-	// 			size: 80,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'fromBranch',
-	// 			header: 'From',
-	// 			size: 150,
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'toBranch',
-	// 			header: 'To',
-	// 			size: 150,
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'bookingDate',
-	// 			header: 'Booking Date',
-	// 			enableResizing: true,
-	// 			size: 120,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 			accessorFn: (row) => format(row.bookingDate, 'dd-MM-yyyy'),
-	// 		},
-	// 		{
-	// 			accessorKey: 'billTypeId',
-	// 			header: 'Bill Type',
-	// 			enableResizing: true,
-	// 			size: 120,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 			accessorFn: (row) =>
-	// 				`${
-	// 					findObjectInArray(
-	// 						billTypes,
-	// 						'billTypeId',
-	// 						row.billTypeId
-	// 					).billType
-	// 				}`,
-	// 		},
-	// 		{
-	// 			accessorKey: 'grandTotal',
-	// 			header: 'Grand Total',
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'actions',
-	// 			header: 'Actions',
-	// 			enableResizing: false,
-	// 			enableColumnFilter: false,
-	// 			enableSorting: false,
-	// 			size: 100,
-	// 			muiTableHeadCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			muiTableBodyCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			muiTableFooterCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			Cell: ({ row }) => {
-	// 				return (
-	// 					<>
-	// 						<Tooltip title='Edit'>
-	// 							<IconButton
-	// 								onClick={() => {
-	// 									navigate(RouterPath.Booking, {
-	// 										state: {
-	// 											bookingDetails: row.original,
-	// 										},
-	// 									});
+	const columnsWithBillType = useMemo<MRT_ColumnDef<BookingInterface>[]>(
+		() => [
+			{
+				accessorKey: 'index',
+				header: '#',
+				enableResizing: false,
+				size: 80,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'fromBranch',
+				header: 'From',
+				size: 150,
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'toBranch',
+				header: 'To',
+				size: 150,
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'bookingDate',
+				header: 'Booking Date',
+				enableResizing: true,
+				size: 120,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+				accessorFn: (row) => format(row.bookingDate, 'dd-MM-yyyy'),
+			},
+			{
+				accessorKey: 'billTypeId',
+				header: 'Bill Type',
+				enableResizing: true,
+				size: 120,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+				accessorFn: (row) =>
+					`${
+						findObjectInArray(
+							billTypes,
+							'billTypeId',
+							row.billTypeId
+						).billType
+					}`,
+			},
+			{
+				accessorKey: 'grandTotal',
+				header: 'Grand Total',
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'actions',
+				header: 'Actions',
+				enableResizing: false,
+				enableColumnFilter: false,
+				enableSorting: false,
+				size: 100,
+				muiTableHeadCellProps: {
+					align: 'right',
+				},
+				muiTableBodyCellProps: {
+					align: 'right',
+				},
+				muiTableFooterCellProps: {
+					align: 'right',
+				},
+				Cell: ({ row }) => {
+					return (
+						<>
+							<Tooltip title='Edit'>
+								<IconButton
+									onClick={() => {
+										navigate(RouterPath.Booking, {
+											state: {
+												bookingDetails: row.original,
+											},
+										});
 
-	// 									handleFormDialogClose();
-	// 								}}
-	// 							>
-	// 								<EditOutlined />
-	// 							</IconButton>
-	// 						</Tooltip>
-	// 					</>
-	// 				);
-	// 			},
-	// 		},
-	// 	],
-	// 	[bookingDetails]
-	// );
+										handleFormDialogClose();
+									}}
+								>
+									<EditOutlined />
+								</IconButton>
+							</Tooltip>
+						</>
+					);
+				},
+			},
+		],
+		[bookingDetails]
+	);
 
-	// const columnsWithoutBillType = useMemo<MRT_ColumnDef<BookingInterface>[]>(
-	// 	() => [
-	// 		{
-	// 			accessorKey: 'index',
-	// 			header: '#',
-	// 			enableResizing: false,
-	// 			size: 80,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'fromBranch',
-	// 			header: 'From',
-	// 			size: 150,
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'toBranch',
-	// 			header: 'To',
-	// 			size: 150,
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'bookingDate',
-	// 			header: 'Booking Date',
-	// 			enableResizing: true,
-	// 			size: 120,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 			accessorFn: (row) => format(row.bookingDate, 'dd-MM-yyyy'),
-	// 		},
-	// 		{
-	// 			accessorKey: 'grandTotal',
-	// 			header: 'Grand Total',
-	// 			enableResizing: true,
-	// 			muiTableHeadCellProps: { align: 'left' },
-	// 			muiTableBodyCellProps: { align: 'left' },
-	// 			muiTableFooterCellProps: { align: 'left' },
-	// 		},
-	// 		{
-	// 			accessorKey: 'actions',
-	// 			header: 'Actions',
-	// 			enableResizing: false,
-	// 			enableColumnFilter: false,
-	// 			enableSorting: false,
-	// 			size: 100,
-	// 			muiTableHeadCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			muiTableBodyCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			muiTableFooterCellProps: {
-	// 				align: 'right',
-	// 			},
-	// 			Cell: ({ row }) => {
-	// 				return (
-	// 					<>
-	// 						<Tooltip title='Edit'>
-	// 							<IconButton
-	// 								onClick={() => {
-	// 									navigate(RouterPath.Booking, {
-	// 										state: {
-	// 											bookingDetails: row.original,
-	// 										},
-	// 									});
+	const columnsWithoutBillType = useMemo<MRT_ColumnDef<BookingInterface>[]>(
+		() => [
+			{
+				accessorKey: 'index',
+				header: '#',
+				enableResizing: false,
+				size: 80,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'fromBranch',
+				header: 'From',
+				size: 150,
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'toBranch',
+				header: 'To',
+				size: 150,
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'bookingDate',
+				header: 'Booking Date',
+				enableResizing: true,
+				size: 120,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+				accessorFn: (row) => format(row.bookingDate, 'dd-MM-yyyy'),
+			},
+			{
+				accessorKey: 'grandTotal',
+				header: 'Grand Total',
+				enableResizing: true,
+				muiTableHeadCellProps: { align: 'left' },
+				muiTableBodyCellProps: { align: 'left' },
+				muiTableFooterCellProps: { align: 'left' },
+			},
+			{
+				accessorKey: 'actions',
+				header: 'Actions',
+				enableResizing: false,
+				enableColumnFilter: false,
+				enableSorting: false,
+				size: 100,
+				muiTableHeadCellProps: {
+					align: 'right',
+				},
+				muiTableBodyCellProps: {
+					align: 'right',
+				},
+				muiTableFooterCellProps: {
+					align: 'right',
+				},
+				Cell: ({ row }) => {
+					return (
+						<>
+							<Tooltip title='Edit'>
+								<IconButton
+									onClick={() => {
+										navigate(RouterPath.Booking, {
+											state: {
+												bookingDetails: row.original,
+											},
+										});
 
-	// 									handleFormDialogClose();
-	// 								}}
-	// 							>
-	// 								<EditOutlined />
-	// 							</IconButton>
-	// 						</Tooltip>
-	// 					</>
-	// 				);
-	// 			},
-	// 		},
-	// 	],
-	// 	[bookingDetails]
-	// );
+										handleFormDialogClose();
+									}}
+								>
+									<EditOutlined />
+								</IconButton>
+							</Tooltip>
+						</>
+					);
+				},
+			},
+		],
+		[bookingDetails]
+	);
 
-	// const table = useMaterialReactTable({
-	// 	columns: user?.displayEstimate
-	// 		? columnsWithBillType
-	// 		: columnsWithoutBillType,
-	// 	data: bookingDetails,
-	// 	filterFromLeafRows: true,
-	// 	paginateExpandedRows: false,
-	// 	enableColumnResizing: true,
-	// 	enablePagination: true,
-	// 	layoutMode: 'grid',
-	// 	enableDensityToggle: false,
-	// 	initialState: {
-	// 		pagination: { pageSize: 100, pageIndex: 0 },
-	// 		density: 'compact',
-	// 	},
-	// 	muiPaginationProps: { rowsPerPageOptions: [100, 200, 500, 1000] },
-	// 	muiTablePaperProps: {
-	// 		sx: {
-	// 			borderRadius: 'var(--shape-medium)',
-	// 			boxShadow: 'var(--elevation-extra-small)',
-	// 		},
-	// 	},
-	// 	muiTableBodyCellProps: { sx: { paddingTop: 0, paddingBottom: 0 } },
-	// });
+	const table = useMaterialReactTable({
+		columns: user?.displayEstimate
+			? columnsWithBillType
+			: columnsWithoutBillType,
+		data: bookingDetails,
+		filterFromLeafRows: true,
+		paginateExpandedRows: false,
+		enableColumnResizing: true,
+		enablePagination: true,
+		layoutMode: 'grid',
+		enableDensityToggle: false,
+		initialState: {
+			pagination: { pageSize: 100, pageIndex: 0 },
+			density: 'compact',
+		},
+		muiPaginationProps: { rowsPerPageOptions: [100, 200, 500, 1000] },
+		muiTablePaperProps: {
+			sx: {
+				borderRadius: 'var(--shape-medium)',
+				boxShadow: 'var(--elevation-extra-small)',
+			},
+		},
+		muiTableBodyCellProps: { sx: { paddingTop: 0, paddingBottom: 0 } },
+	});
 
 	return (
 		<>
@@ -484,8 +484,8 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 									onChange={(event) =>
 										setSearchInput(event.target.value)
 									}
-									// onKeyDown={onEnter}
-									// disabled={isLoading}
+									onKeyDown={onEnter}
+									disabled={isLoading}
 								/>
 								<div
 									data-component='header'
@@ -494,11 +494,13 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 									<Tooltip title='Search LR Number'>
 										<IconButton
 											color='primary'
-											// onClick={handleGetBookingDetails}
+											onClick={handleGetBookingDetails}
 										>
-											
+											{!isLoading ? (
 												<Search />
-											
+											) : (
+												<CircularProgress size={24} />
+											)}
 										</IconButton>
 									</Tooltip>
 								</div>
@@ -549,8 +551,8 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 							onChange={(event) =>
 								setSearchInput(event.target.value)
 							}
-							// onKeyDown={onEnter}
-							// disabled={isLoading}
+							onKeyDown={onEnter}
+							disabled={isLoading}
 						/>
 					</FormControl>
 				</DialogContent>
@@ -560,8 +562,8 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 					</Button>
 					<LoadingButton
 						color='primary'
-						// onClick={handleGetBookingDetails}
-						// loading={isLoading}
+						onClick={handleGetBookingDetails}
+						loading={isLoading}
 						type='submit'
 					>
 						Search
@@ -584,7 +586,7 @@ const Header = memo(({ onClick, navigationState }: HeaderInterface) => {
 					data-component='article-shapes'
 					className='dialog-content'
 				>
-					{/* <MaterialReactTable table={table} /> */}
+					<MaterialReactTable table={table} />
 				</DialogContent>
 				<DialogActions>
 					<Button

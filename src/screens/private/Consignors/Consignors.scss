@@ -1,0 +1,115 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='consignors'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.top[data-component='consignors'] {
+		display: flex;
+		align-items: center;
+		gap: var(--space);
+		z-index: 0;
+	}
+
+	.bottom[data-component='consignors'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.table-container[data-component='consignors'] {
+			display: block;
+			border-radius: var(--shape-medium);
+			z-index: 0;
+		}
+	}
+}
+
+.fab-container[data-component='consignors'] {
+	position: fixed;
+	bottom: var(--space);
+	right: var(--space);
+	z-index: 1;
+}
+
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='consignors'] {
+	.dialog-title[data-component='consignors'] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.dialog-content[data-component='consignors'] {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding-top: 8px;
+
+		.input-container[data-component='consignors'] {
+			display: flex;
+			gap: 8px;
+			margin: 0 0 16px 0;
+		}
+
+		.container[data-component='consignors'] {
+			display: flex;
+			gap: 16px;
+			flex-direction: row;
+
+			.columns-3[data-component='consignors'] {
+				height: fit-content;
+				width: 33.33%;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-2[data-component='consignors'] {
+				height: fit-content;
+				width: 50%;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.phone-container[data-component='consignors'] {
+				display: flex;
+				gap: 4px;
+
+				.phone-add-button[data-component='consignors'] {
+					height: 40px;
+					width: 40px;
+					margin: 8px 0;
+				}
+			}
+		}
+	}
+
+	.text-button[data-component='consignors'] {
+		border-radius: var(--shape-extra-large);
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.dialog[data-component='consignors'] {
+		.dialog-content[data-component='consignors'] {
+			.container[data-component='consignors'] {
+				flex-direction: column;
+
+				.columns-3[data-component='consignors'],
+				.columns-2[data-component='consignors'] {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

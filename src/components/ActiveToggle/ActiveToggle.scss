@@ -1,0 +1,34 @@
+// -------------------------------------------------------------------------------------------
+
+.toggle-button[data-component='active-toggle'] {
+	height: 40px;
+
+	.active[data-component='active-toggle'] {
+		background-color: var(--success-container);
+		color: var(--on-success-container);
+		border-radius: var(--shape-extra-large) 0 0 var(--shape-extra-large);
+		gap: 8px;
+	}
+
+	.disabled[data-component='active-toggle'] {
+		background-color: var(--error-container);
+		color: var(--on-error-container);
+		border-radius: 0 var(--shape-extra-large) var(--shape-extra-large) 0;
+		gap: 8px;
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.toggle-button[data-component='active-toggle'] {
+		width: 100%;
+
+		.active[data-component='active-toggle'],
+		.disabled[data-component='active-toggle'] {
+			width: 50%;
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

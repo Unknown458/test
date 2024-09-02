@@ -1,4 +1,4 @@
-
+// -------------------------------------------------------------------------------------------
 
 import {
 	createContext,
@@ -33,8 +33,10 @@ export const AuthProvider = memo(({ children }: AuthProviderInterface) => {
 		const tokens = getTokens();
 		return (
 			!!tokens?.accessToken &&
-			!!tokens?.accessTokenExpiry 
-			
+			!!tokens?.accessTokenExpiry &&
+			!!tokens?.refreshToken &&
+			!!tokens?.refreshTokenExpiry &&
+			new Date(tokens.refreshTokenExpiry).getTime() > Date.now()
 		);
 	}, []);
 
@@ -65,4 +67,4 @@ export const AuthProvider = memo(({ children }: AuthProviderInterface) => {
 	);
 });
 
-
+// -------------------------------------------------------------------------------------------

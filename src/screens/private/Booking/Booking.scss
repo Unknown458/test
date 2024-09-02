@@ -1,0 +1,786 @@
+// -------------------------------------------------------------------------------------------
+
+.container-screen[data-component='booking'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.bottom[data-component='booking'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.shine-background {
+			background-image: linear-gradient(
+				to right,
+				transparent,
+				var(--primary-container)
+			);
+		}
+
+		.form[data-component='booking'] {
+			height: fit-content;
+			display: flex;
+			padding: 0 0 16px 0;
+
+			.left[data-component='booking'] {
+				height: fit-content;
+				width: calc(100% - 200px);
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				margin: 0 var(--space) 0 0;
+
+				table {
+					td {
+						height: 28px;
+					}
+				}
+
+				.container[data-component='booking'] {
+					height: fit-content;
+					display: flex;
+					gap: 16px;
+
+					.add-button[data-component='booking'] {
+						height: 40px;
+						width: 100%;
+						background-color: var(--primary-container);
+						color: var(--on-primary-container);
+					}
+
+					.columns-7[data-component='booking'] {
+						height: fit-content;
+						width: calc(100% / 7);
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+					}
+
+					.columns-5[data-component='booking'] {
+						height: fit-content;
+						width: calc(100% / 5);
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+					}
+
+					.columns-4[data-component='booking'] {
+						height: fit-content;
+						width: 25%;
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+					}
+
+					.columns-3[data-component='booking'] {
+						height: fit-content;
+						width: 33.33%;
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+					}
+
+					.columns-2[data-component='booking'] {
+						height: fit-content;
+						width: 50%;
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+					}
+				}
+
+				.eway-bill-number[data-component='booking'] {
+					display: flex;
+					gap: 4px;
+
+					.eway-bill-number-add-button[data-component='booking'] {
+						height: 40px;
+						width: 40px;
+					}
+				}
+			}
+
+			.right[data-component='booking'] {
+				height: fit-content;
+				width: 150px;
+				border-left: 1px solid var(--outline-variant);
+				padding: 0 0 0 var(--space);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+		}
+
+		.buttons-container[data-component='booking'] {
+			padding: var(--space) 0 0 0;
+			display: flex;
+			flex-direction: row-reverse;
+			gap: 16px;
+
+			button {
+				border-radius: var(--shape-huge);
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.container-screen[data-component='booking'] {
+		.bottom[data-component='booking'] {
+			.form[data-component='booking'] {
+				flex-direction: column;
+				gap: 16px;
+
+				.left[data-component='booking'] {
+					width: 100%;
+					margin: 0;
+
+					.container[data-component='booking'] {
+						flex-direction: column;
+
+						.columns-7[data-component='booking'],
+						.columns-5[data-component='booking'],
+						.columns-4[data-component='booking'],
+						.columns-3[data-component='booking'],
+						.columns-2[data-component='booking'] {
+							width: 100%;
+						}
+					}
+				}
+
+				.right[data-component='booking'] {
+					width: 100%;
+					border-left: none;
+					border-top: 1px solid var(--outline-variant);
+					padding: 16px 0 0 0;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+// .pdf[data-component='booking'] {
+// 	--height: 356mm;
+// 	--width: 216mm;
+// 	--background: #fff;
+// 	--gap: 1.5cm;
+
+// 	height: var(--height);
+// 	width: var(--width);
+// 	background-color: var(--background) !important;
+// 	position: fixed;
+// 	top: 2000vh;
+// 	left: 50%;
+// 	z-index: 10;
+// 	transform: translateX(-50%);
+// 	box-shadow: var(--elevation-extra-small);
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: var(--gap);
+// 	padding: 1.5cm 2cm;
+
+// 	.section[data-component='booking'] {
+// 		height: calc(var(--height) - (var(--gap) * 4));
+// 		border-bottom: 1px dashed grey;
+// 		display: flex;
+// 		flex-direction: column;
+// 		padding: 17mm 0 0 0;
+// 		border: 1px solid grey;
+
+// 		.label[data-component='booking'] {
+// 			font-size: 11px;
+// 			text-wrap: nowrap;
+// 		}
+
+// 		.value[data-component='booking'] {
+// 			font-size: 11px;
+// 			text-wrap: nowrap;
+// 			font-weight: 600;
+// 			padding: 0 8px 0 0;
+// 		}
+
+// 		.container[data-component='booking'] {
+// 			display: flex;
+// 			justify-content: space-between;
+
+// 			.column-4[data-component='booking'] {
+// 				width: calc(100% / 4);
+// 				display: flex;
+// 				gap: 8px;
+// 			}
+
+// 			.column-3[data-component='booking'] {
+// 				width: calc(100% / 3);
+// 				display: flex;
+// 				gap: 8px;
+// 			}
+
+// 			.column-2[data-component='booking'] {
+// 				width: calc(100% / 2);
+// 				display: flex;
+// 				gap: 8px;
+// 			}
+
+// 			.column-1[data-component='booking'] {
+// 				width: calc(100% / 1);
+// 				display: flex;
+// 				gap: 8px;
+// 			}
+// 		}
+
+// 		.top-section[data-component='booking'] {
+// 			padding: 8px;
+// 			border-top: 1px solid grey;
+// 			border-bottom: 1px solid grey;
+// 			display: flex;
+
+// 			.top-section-left[data-component='booking'] {
+// 				flex: 1;
+// 				display: flex;
+// 				flex-direction: column;
+// 				gap: 4px;
+// 			}
+
+// 			.top-section-right[data-component='booking'] {
+// 				.qr-code[data-component='booking'] {
+// 					height: 60px;
+// 					width: 60px;
+// 					margin: 0 0 0 4px;
+// 				}
+// 			}
+// 		}
+
+// 		.bottom-section[data-component='booking'] {
+// 			display: flex;
+// 			flex: 1;
+
+// 			.details[data-component='booking'] {
+// 				width: 80%;
+// 				border-right: 1px solid grey;
+
+// 				.party[data-component='booking'] {
+// 					display: flex;
+// 					flex-direction: column;
+// 					border-bottom: 1px solid grey;
+// 					padding: 4px;
+// 				}
+
+// 				.values-srction[data-component='booking'] {
+// 					display: flex;
+// 					flex-direction: column;
+// 					padding: 4px;
+
+// 					.total-table[data-component='booking'] {
+// 						border-top: 1px solid lightgray;
+// 						border-bottom: 1px solid lightgray;
+// 						padding: 4px 0;
+// 						margin: 4px 0 0 0;
+// 					}
+// 				}
+// 			}
+
+// 			.total[data-component='booking'] {
+// 				width: 20%;
+// 				display: flex;
+// 				flex-direction: column;
+
+// 				.total-top[data-component='booking'] {
+// 					display: flex;
+// 					flex: 1;
+
+// 					.left-total[data-component='booking'] {
+// 						font-size: 14px;
+// 						width: 20px;
+// 						word-wrap: break-word;
+// 						padding: 4px;
+// 						border-right: 1px solid lightgrey;
+// 						text-align: center;
+// 					}
+
+// 					.right-total[data-component='booking'] {
+// 						flex: 1;
+// 						padding: 4px 0 0 0;
+
+// 						.parameter[data-component='booking'] {
+// 							font-size: 11px;
+// 							text-align: right;
+// 							padding: 0 4px 4px 0;
+// 						}
+// 					}
+// 				}
+
+// 				.grand-total[data-component='booking'] {
+// 					width: 100%;
+// 					font-size: 11px;
+// 					text-align: center;
+// 					padding: 4px 0 4px 0;
+// 					font-weight: 600;
+// 					border-top: 1px solid grey;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+// .a5-pdf[data-component='booking'] {
+// 	--height: 210mm;
+// 	--weight: 148mm;
+// 	height: var(--height);
+// 	width: var(--weight);
+// 	background-color: white;
+// 	position: fixed;
+// 	top: 0;
+// 	left: 50%;
+// 	z-index: 10;
+// 	transform: translateX(-50%);
+// 	box-shadow: var(--elevation-extra-small);
+// 	padding: 0.7cm;
+
+// 	.value-container[data-component='booking'] {
+// 		display: flex;
+// 	}
+
+// 	.label[data-component='booking'] {
+// 		height: fit-content;
+// 		font-size: 8px;
+// 		font-weight: 500;
+// 	}
+
+// 	.value[data-component='booking'] {
+// 		height: fit-content;
+// 		font-size: 8px;
+// 		margin: 0 0 0 4px;
+// 	}
+
+// 	.container[data-component='booking'] {
+// 		height: fit-content;
+// 		display: flex;
+// 		gap: 16px;
+
+// 		.column-7[data-component='booking'] {
+// 			height: fit-content;
+// 			width: calc(100% / 7);
+// 			display: flex;
+// 		}
+
+// 		.column-5[data-component='booking'] {
+// 			height: fit-content;
+// 			width: calc(100% / 5);
+// 			display: flex;
+// 		}
+
+// 		.column-4[data-component='booking'] {
+// 			height: fit-content;
+// 			width: 25%;
+// 			display: flex;
+// 		}
+
+// 		.column-3[data-component='booking'] {
+// 			height: fit-content;
+// 			width: calc(100% / 3);
+// 			display: flex;
+// 		}
+
+// 		.column-2[data-component='booking'] {
+// 			height: fit-content;
+// 			width: 50%;
+// 			display: flex;
+// 		}
+// 	}
+
+// 	.box[data-component='booking'] {
+// 		border: 1px solid grey;
+
+// 		.top[data-component='booking'] {
+// 			display: flex;
+
+// 			.top-left[data-component='booking'] {
+// 				flex: 1;
+
+// 				.top-box[data-component='booking'] {
+// 					display: flex;
+// 					--qr-height: 84px;
+// 					--qr-width: 70px;
+// 					border-bottom: 1px solid grey;
+
+// 					.top-box-left[data-component='booking'] {
+// 						flex: 1;
+// 						border-right: 1px solid grey;
+
+// 						.top-box-left-top[data-component='booking'] {
+// 							.top-box-left-top-logo[data-component='booking'] {
+// 								height: 56px;
+// 							}
+
+// 							.top-box-left-top-address[data-component='booking'] {
+// 								padding: 4px;
+// 							}
+// 						}
+
+// 						.top-box-left-bottom[data-component='booking'] {
+// 							.top-box-left-bottom-address[data-component='booking'] {
+// 								border-top: 1px solid grey;
+// 								padding: 4px;
+// 							}
+// 						}
+// 					}
+
+// 					.top-box-right[data-component='booking'] {
+// 						height: var(--qr-height);
+// 						width: var(--qr-width);
+// 						display: flex;
+// 						flex-direction: column;
+
+// 						.qr-headline[data-component='booking'] {
+// 							border-bottom: 1px solid grey;
+// 							font-size: 8px;
+// 							text-align: center;
+// 						}
+
+// 						.qr-code[data-component='booking'] {
+// 							width: 100%;
+// 						}
+// 					}
+// 				}
+
+// 				.bottom-box[data-component='booking'] {
+// 					padding: 4px;
+// 				}
+// 			}
+
+// 			.top-right[data-component='booking'] {
+// 				width: 140px;
+// 				border-left: 1px solid grey;
+// 				padding: 4px 0;
+// 				display: flex;
+// 				flex-direction: column;
+// 				gap: 4px;
+
+// 				.value-container[data-component='booking'] {
+// 					padding: 0 4px;
+// 				}
+
+// 				.label[data-component='booking'] {
+// 					text-wrap: nowrap;
+// 				}
+
+// 				.border[data-component='booking'] {
+// 					border-top: 1px solid grey;
+// 				}
+// 			}
+// 		}
+
+// 		.bottom[data-component='booking'] {
+// 			display: flex;
+
+// 			.bottom-left[data-component='booking'] {
+// 				flex: 1;
+
+// 				.party-box[data-component='booking'] {
+// 					display: flex;
+// 					padding: 4px;
+// 					justify-content: space-between;
+// 					border-top: 1px solid grey;
+// 				}
+
+// 				.table-values[data-component='booking'] {
+// 					border-top: 1px solid grey;
+// 					padding: 4px 0;
+
+// 					.table-head[data-component='booking'] {
+// 						padding: 0 4px 2px 4px;
+// 						border-bottom: 1px solid lightgrey;
+// 					}
+
+// 					.table-row[data-component='booking'] {
+// 						padding: 1px 4px;
+// 					}
+// 				}
+
+// 				.total-table[data-component='booking'] {
+// 					border-top: 1px solid lightgrey;
+// 					padding: 2px 4px 4px 4px;
+// 				}
+
+// 				.row-1[data-component='booking'] {
+// 					border-top: 1px solid grey;
+// 					padding: 4px;
+// 				}
+// 			}
+
+// 			.bottom-right[data-component='booking'] {
+// 				width: 100px;
+// 				border-top: 1px solid grey;
+// 				border-left: 1px solid grey;
+// 				display: flex;
+
+// 				.payment-type-value[data-component='booking'] {
+// 					height: 100%;
+// 					width: 10px;
+// 					border-right: 1px solid gray;
+// 					font-size: 12px;
+// 					word-wrap: break-word;
+// 					text-align: center;
+// 					padding: 10px 0 0 0;
+// 				}
+
+// 				.list-of-total[data-component='booking'] {
+// 					display: flex;
+// 					flex-direction: column;
+// 					justify-content: space-between;
+
+// 					.right-total[data-component='booking'] {
+// 						padding: 4px 0;
+
+// 						.parameter[data-component='booking'] {
+// 							font-size: 8px;
+// 							padding: 1px 4px;
+// 							text-align: right;
+// 						}
+// 					}
+
+// 					.grand-total[data-component='booking'] {
+// 						border-top: 1px solid grey;
+// 						font-size: 8px;
+// 						padding: 4px;
+// 						font-weight: 500;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+.pdf-new[data-component='booking'] {
+	--height: 356mm;
+	--width: 216mm;
+	--background: #fff;
+	--gap: 0;
+
+	* {
+		font-family: 'Times New Roman', serif !important;
+		font-weight: 800;
+	}
+
+	height: var(--height);
+	width: var(--width);
+	background-color: var(--background) !important;
+	position: fixed;
+	top: 2000vh;
+	left: 50%;
+	z-index: 10;
+	transform: translateX(-50%);
+	box-shadow: var(--elevation-extra-small);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+	padding: 0 15mm 16mm 11mm;
+
+	.section[data-component='booking'] {
+		height: calc((var(--height) / 3) - 6mm);
+		border-bottom: 1px dashed black;
+		display: flex;
+		flex-direction: column;
+		margin: 27mm 0 0 0;
+		border: 2px solid black;
+
+		.value-container[data-component='booking'] {
+			display: flex;
+			gap: 4px;
+			padding: 4px;
+		}
+
+		.label[data-component='booking'] {
+			font-size: 14px;
+		}
+
+		.value[data-component='booking'] {
+			font-size: 14px;
+			font-weight: 800;
+			word-break: break-all;
+		}
+
+		.medium-value[data-component='booking'] {
+			.value-container[data-component='booking'] {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				.value[data-component='booking'] {
+					font-size: 14px;
+				}
+			}
+		}
+
+		.large-value[data-component='booking'] {
+			.value-container[data-component='booking'] {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				.value[data-component='booking'] {
+					font-size: 18px;
+				}
+			}
+		}
+
+		.section-box[data-component='booking'] {
+			border-bottom: 1px solid black;
+
+			&:nth-last-of-type(2) {
+				flex: 1;
+				display: flex;
+
+				.column-container[data-component='booking'] {
+					width: 100%;
+				}
+			}
+		}
+
+		.column-container[data-component='booking'] {
+			display: flex;
+
+			.columns-1[data-component='booking'] {
+				width: calc(100% / 1);
+			}
+
+			.columns-2[data-component='booking'] {
+				width: calc(100% / 2);
+			}
+
+			.columns-3[data-component='booking'] {
+				width: calc(100% / 3);
+			}
+
+			.columns-4[data-component='booking'] {
+				width: calc(100% / 4);
+			}
+
+			.columns-5[data-component='booking'] {
+				width: calc(100% / 5);
+			}
+
+			.columns-6[data-component='booking'] {
+				width: calc(100% / 6);
+			}
+
+			.columns-7[data-component='booking'] {
+				width: calc(100% / 7);
+			}
+		}
+
+		.qr-container[data-component='booking'] {
+			height: 60px;
+			width: 60px;
+			margin: auto;
+
+			.qr-code[data-component='booking'] {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		.border-right[data-component='booking'] {
+			border-right: 1px solid black;
+		}
+
+		.border-left[data-component='booking'] {
+			border-left: 1px solid black;
+		}
+
+		.border-bottom[data-component='booking'] {
+			border-bottom: 1px solid black;
+		}
+
+		.border-top[data-component='booking'] {
+			border-top: 1px solid black;
+		}
+
+		.padding[data-component='booking'] {
+			padding: 2px 4px;
+		}
+
+		.center[data-component='booking'] {
+			width: 100%;
+			text-align: center;
+		}
+
+		.adjust-font-size[data-component='booking'] {
+			white-space: nowrap;
+			font-size: clamp(10px, 12px, 14px);
+		}
+
+		.calculations-container[data-component='booking'] {
+			width: 34% !important;
+
+			.calculations[data-component='booking'] {
+				height: 100%;
+				display: flex;
+
+				.payment-type-container[data-component='booking'] {
+					height: 100%;
+					width: 18px;
+					word-break: break-all;
+					text-align: center;
+					font-size: 16px;
+					font-weight: 600;
+					padding: 4px;
+					background-color: rgba(0, 0, 0, 0.2);
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.totals[data-component='booking'] {
+					width: 100%;
+
+					.right-total[data-component='booking'] {
+						height: 100%;
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+
+						.parameter[data-component='booking'] {
+							width: 100%;
+							font-size: 14px;
+							display: flex;
+							border-bottom: 1px solid black;
+							justify-content: space-between;
+							padding: 0 0 0 4px;
+
+							.parameter-value[data-component='booking'] {
+								width: 55% !important;
+								border-left: 1px solid black;
+								padding: 2px 4px;
+								text-align: right;
+							}
+						}
+
+						.total-bottom-stick[data-component='booking'] {
+							flex: 1;
+							display: flex;
+							flex-direction: column;
+							justify-content: end;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

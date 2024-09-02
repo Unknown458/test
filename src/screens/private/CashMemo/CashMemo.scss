@@ -1,0 +1,421 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='cash-memo'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+
+	.top[data-component='cash-memo'] {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		z-index: 0;
+		border-bottom: 1px solid var(--outline-variant);
+		padding: 0 0 var(--space) 0;
+	}
+
+	.bottom[data-component='cash-memo'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		z-index: 0;
+
+		.container[data-component='cash-memo'] {
+			height: fit-content;
+			display: flex;
+			gap: 16px;
+			flex-direction: row;
+
+			.columns-7[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 7);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-5[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 5);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-4[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 4);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-3[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 3);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-2[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 2);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-1[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 1);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.lr-no-container[data-component='cash-memo'] {
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		.data-container[data-component='cash-memo'] {
+			flex: 1;
+			display: flex;
+			gap: var(--space);
+
+			.display-container[data-component='cash-memo'] {
+				width: 150px;
+				border-left: 1px solid var(--outline-variant);
+				padding: var(--space) 0 var(--space) var(--space);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+		}
+
+		.buttons-container[data-component='cash-memo'] {
+			padding: var(--space) 0 0 0;
+			display: flex;
+			flex-direction: row-reverse;
+			gap: 16px;
+
+			button {
+				border-radius: var(--shape-huge);
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.container[data-component='cash-memo'] {
+		.bottom[data-component='cash-memo'] {
+			.container[data-component='cash-memo'] {
+				flex-direction: column !important;
+
+				.columns-1[data-component='cash-memo'],
+				.columns-2[data-component='cash-memo'],
+				.columns-3[data-component='cash-memo'],
+				.columns-4[data-component='cash-memo'],
+				.columns-5[data-component='cash-memo'],
+				.columns-6[data-component='cash-memo'],
+				.columns-7[data-component='cash-memo'] {
+					width: 100%;
+				}
+			}
+
+			.data-container[data-component='cash-memo'] {
+				flex-direction: column;
+				.table-container[data-component='cash-memo'] {
+					width: 100%;
+				}
+
+				.display-container[data-component='cash-memo'] {
+					width: 100%;
+					padding: var(--space) 0 0 0;
+					border-top: 1px solid var(--outline-variant);
+					border-left: 0;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+.pdf[data-component='cash-memo'] {
+	--height: 297mm;
+	--width: 210mm;
+	--background: #fff;
+
+	display: flex;
+	position: fixed;
+	left: 50%;
+	top: 2000vh;
+	z-index: 10;
+	transform: translateX(-50%);
+	height: var(--height);
+	width: var(--width);
+	background-color: var(--background) !important;
+	display: flex;
+
+	* {
+		font-family: 'Times New Roman', serif !important;
+		font-weight: 700;
+	}
+
+
+	.head-container[data-component='loading-memo'] {
+		display: flex;
+		align-items: center;
+		  padding: 4px;
+		  margin-top: 8px;
+		border: 1px solid black;
+		justify-content: space-between;
+		
+			   }
+
+	.section[data-component='cash-memo'] {
+		height: 50%;
+		width: 50%;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+
+		.logo-container[data-component='cash-memo'] {
+			display: grid;
+			place-content: center;
+		
+
+			.logo[data-component='cash-memo'] {
+				height: 40px;
+			}
+		}
+
+		.headline[data-component='cash-memo'] {
+			
+			text-align: center;
+			margin-right: 45px;
+			font-size: 24px !important;
+			font-weight: 700;
+		}
+
+		.text[data-component='cash-memo'] {
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			border-bottom: 1px solid black;
+			text-align: center;
+			padding: 4px;
+			font-weight: 600;
+			font-size: 14px !important;
+		}
+
+		.container[data-component='cash-memo'] {
+			height: fit-content;
+			display: flex;
+			gap: 2px;
+			flex-direction: row;
+
+			.columns-12[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 12);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-10[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 10);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-8[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 8);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-7[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 7);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-6[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 6);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-5[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 5);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-4[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 4);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-3[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 3);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.columns-2[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 2);
+				display: flex;
+				flex-direction: column;
+				gap: 0 !important;
+			}
+
+			.columns-1[data-component='cash-memo'] {
+				height: fit-content;
+				width: calc(100% / 1);
+				display: flex;
+				flex-direction: column;
+				gap: 0 !important;
+			}
+		}
+
+		.section-1[data-component='cash-memo'] {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			padding: 4px;
+			border-right: 1px solid black;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+		}
+
+		.section-2[data-component='cash-memo'] {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			padding: 4px;
+			border-right: 1px solid black;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+		}
+
+		.section-3[data-component='cash-memo'] {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			padding: 4px;
+			border-right: 1px solid black;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+		}
+
+		.section-4[data-component='cash-memo'] {
+			flex: 1;
+			display: flex;
+			border-right: 1px solid black;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+
+			.left-section[data-component='cash-memo'] {
+				flex: 1;
+
+				.nested-section-1[data-component='cash-memo'] {
+					padding: 4px;
+					border-bottom: 1px solid black;
+				}
+
+				.nested-section-2[data-component='cash-memo'] {
+					padding: 4px;
+					border-bottom: 1px solid black;
+					display: flex;
+					flex-direction: column;
+					gap: 4px;
+				}
+
+				.nested-section-3[data-component='cash-memo'] {
+					padding: 4px;
+					border-bottom: 1px solid black;
+				}
+
+				.nested-section-4[data-component='cash-memo'] {
+					padding: 4px;
+				}
+			}
+
+			.right-section[data-component='cash-memo'] {
+				width: 140px;
+				border-left: 1px solid black;
+				display: flex;
+				flex-direction: column;
+
+				.value-container[data-component='cash-memo'] {
+					justify-content: space-between;
+					padding: 2px 4px;
+
+					.label[data-component='cash-memo'] {
+						font-size: 13px;
+					}
+
+					.value[data-component='cash-memo'] {
+						font-size: 13px;
+					}
+				}
+
+				.total[data-component='cash-memo'] {
+					background-color: lightgrey;
+					border-top: 1px solid black;
+					padding: 4px;
+				}
+
+				.name[data-component='cash-memo'] {
+					border-top: 1px solid black;
+					padding: 4px;
+				}
+			}
+		}
+
+		.value-container[data-component='cash-memo'] {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+
+			.label[data-component='cash-memo'] {
+				display: block;
+				font-size: 14px;
+			}
+
+			.value[data-component='cash-memo'] {
+				display: block;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
+
+		.align-center[data-component='cash-memo'] {
+			text-align: center !important;
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

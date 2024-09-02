@@ -1,0 +1,56 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='stock'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.bottom[data-component='stock'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.container[data-component='stock'] {
+			display: flex;
+			gap: 16px;
+			padding: 8px 0 0 0;
+			flex-direction: row !important;
+
+			.columns-3[data-component='stock'] {
+				height: fit-content;
+				width: calc(100% / 3);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+		}
+
+		.buttons-container[data-component='stock'] {
+			padding: var(--space) 0 0 0;
+			display: flex;
+			flex-direction: row-reverse;
+			gap: 16px;
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.container[data-component='stock'] {
+		.bottom[data-component='stock'] {
+			.container[data-component='stock'] {
+				flex-direction: column;
+
+				.columns-3[data-component='stock'] {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

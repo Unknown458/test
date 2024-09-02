@@ -1,0 +1,96 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='company-quotation'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.top[data-component='company-quotation'] {
+		display: flex;
+		align-items: center;
+		gap: var(--space);
+		z-index: 0;
+	}
+
+	.bottom[data-component='company-quotation'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.table-container[data-component='company-quotation'] {
+			display: block;
+			border-radius: var(--shape-medium);
+			z-index: 0;
+		}
+	}
+}
+
+.fab-container[data-component='company-quotation'] {
+	position: fixed;
+	bottom: var(--space);
+	right: var(--space);
+	z-index: 1;
+}
+
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='company-quotation'] {
+	.dialog-title[data-component='company-quotation'] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.dialog-content[data-component='company-quotation'] {
+		display: flex;
+		gap: 16px;
+
+		.container[data-component='company-quotation'] {
+			display: grid;
+			gap: 16px;
+			padding: 8px 0 0 0;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+
+			.columns-3[data-component='company-quotation'] {
+				height: fit-content;
+				// width: calc(100% / 3);
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				
+			
+			}
+		}
+	}
+
+	.text-button[data-component='company-quotation'] {
+		border-radius: var(--shape-extra-large);
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.dialog[data-component='company-quotation'] {
+		.dialog-title[data-component='company-quotation'] {
+			flex-direction: column;
+			align-items: start;
+			gap: var(--space);
+		}
+
+		.dialog-content[data-component='company-quotation'] {
+			.container[data-component='company-quotation'] {
+				flex-direction: column;
+
+				.columns-3[data-component='company-quotation'] {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------

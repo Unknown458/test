@@ -1,0 +1,119 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='branches'] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space);
+
+	.top[data-component='branches'] {
+		display: flex;
+		align-items: center;
+		gap: var(--space);
+		z-index: 0;
+	}
+
+	.bottom[data-component='branches'] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space);
+		z-index: 0;
+
+		.table-container[data-component='branches'] {
+			display: block;
+			border-radius: var(--shape-medium);
+			z-index: 0;
+		}
+	}
+}
+
+.input-container[data-component='branches'] {
+	display: flex;
+	gap: 4px;
+	
+	.pin-add-button[data-component='branches'] {
+		
+		margin: 8px 0;
+	}
+}
+
+
+
+.fab-container[data-component='branches'] {
+	position: fixed;
+	bottom: var(--space);
+	right: var(--space);
+	z-index: 1;
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+.dialog[data-component='branches'] {
+	.dialog-title[data-component='branches'] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.dialog-content[data-component='branches'] {
+		display: flex;
+		gap: 16px;
+
+		.container[data-component='branches'] {
+			display: flex;
+			gap: 16px;
+			padding: 8px 0 0 0;
+			flex-direction: row;
+
+			.columns-3[data-component='branches'] {
+				height: fit-content;
+				width: 33.33%;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+
+				.region-input[data-component='branches'] {
+					display: flex;
+					gap: 16px;
+
+					.add-region-button {
+						height: 56px;
+						width: 200px;
+						background-color: var(--primary-container);
+						color: var(--on-primary-container);
+					}
+				}
+			}
+		}
+	}
+
+	.text-button[data-component='branches'] {
+		border-radius: var(--shape-extra-large);
+	}
+}
+
+// -------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 600px) {
+	.dialog[data-component='branches'] {
+		.dialog-title[data-component='branches'] {
+			flex-direction: column;
+			align-items: start;
+			gap: var(--space);
+		}
+
+		.dialog-content[data-component='branches'] {
+			.container[data-component='branches'] {
+				flex-direction: column;
+
+				.columns-3[data-component='branches'] {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
