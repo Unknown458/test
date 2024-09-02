@@ -141,6 +141,9 @@ function App() {
               </Route>
               <Route element={<Private />}>
                 <Route path={RouterPath.Product} element={<Product />} />
+                <Route path={RouterPath.NotFound} element={<NotFound />} />
+
+
               </Route>
             </Routes>
           </BrowserRouter>

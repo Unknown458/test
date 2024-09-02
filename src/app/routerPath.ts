@@ -1,7 +1,8 @@
 enum RouterPath {
 
     Login = "/login",
-    Product = '/products'
+    Product = '/products',
+    NotFound = '*',
 
 }
 

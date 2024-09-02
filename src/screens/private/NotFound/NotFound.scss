@@ -1,0 +1,36 @@
+// -------------------------------------------------------------------------------------------
+
+.container[data-component='not-found'] {
+	padding: var(--space);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space);
+
+	.top[data-component='not-found'] {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.illustration[data-component='not-found'] {
+			width: min(400px, 100%);
+		}
+	}
+
+	.bottom[data-component='not-found'] {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+
+		.title[data-component='not-found'] {
+			color: var(--on-surface);
+		}
+
+		.text[data-component='not-found'] {
+			color: var(--on-surface-variant);
+		}
+	}
+}
+
+// -------------------------------------------------------------------------------------------
