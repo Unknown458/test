@@ -27,6 +27,7 @@ import {
   setupAxiosInterceptors,
 } from "./utils/axiosInterceptors";
 import { useState, useEffect } from "react";
+import NotFound from "./screens/private/NotFound/NotFound";
 
 // -------------------------------------------------------------------------------------------
 
