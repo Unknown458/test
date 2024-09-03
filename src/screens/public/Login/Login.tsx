@@ -14,7 +14,7 @@ import {
 
 import AppDetails from '../../../app/appDetails';
 import { useAuth } from '../../../contexts/Auth/Auth';
-import { verifyCaptcha } from '../../../services/recaptcha/recaptcha';
+
 import { verifyUser } from '../../../services/user/user';
 import { VerifyUserInterface } from '../../../services/user/user.types';
 import hashData from '../../../utils/hashData';
@@ -36,9 +36,7 @@ const Login = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 	const recaptchaRef = useRef<any>(null);
-	const [recaptchaToken, setRecaptchaToken] = useState('');
-	const [isRecaptchaVerified, setIsRecaptchaVerified] =
-		useState<boolean>(false);
+
 	const { handleLogin, handleLogout } = useAuth();
 
 	useEffect(() => {
@@ -134,21 +132,20 @@ const Login = () => {
 		}
 	};
 
-	const validateForm = (): boolean => {
-		const isCompanyCodeValid = validateCompanyCode();
-		const isUsernameValid = validateUsername();
-		const isPasswordValid = validatePassword();
+	// const validateForm = (): boolean => {
+	// 	const isCompanyCodeValid = validateCompanyCode();
+	// 	const isUsernameValid = validateUsername();
+	// 	const isPasswordValid = validatePassword();
 
-		if (isCompanyCodeValid && isUsernameValid && isPasswordValid) {
-			return true;
-		} else {
-			return false;
-		}
-	};
+	// 	if (isCompanyCodeValid && isUsernameValid && isPasswordValid) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// };
 
 	const handleSubmit = async () => {
-		if (validateForm() && isRecaptchaVerified) {
-			if (recaptchaToken && isRecaptchaVerified) {
+	
 				setLoading(true);
 
 				const data = {
@@ -169,11 +166,8 @@ const Login = () => {
 
 				setLoading(false);
 				
-			} else {
-				handleLogout();
-				alert('reCAPTCHA token not available');
-			}
-		}
+			
+		
 	};
 
 	return (
@@ -302,7 +296,7 @@ const Login = () => {
 					startIcon={<LoginOutlined />}
 					data-component='login'
 					className='filled-button'
-					disabled={isRecaptchaVerified ? false : true}
+					
 					onClick={handleSubmit}
 					loading={loading}
 				>
