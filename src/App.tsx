@@ -53,13 +53,12 @@ import {
 import LDMSequence from './screens/private/GDMSequence/GDMSequence';
 import Branches from './screens/private/Branches/Branches';
 
-
 // -------------------------------------------------------------------------------------------
 
 let time: Date = new Date();
 
 export const getTime = (): Date => {
-	return  new Date(time);
+	return time;
 };
 
 // -------------------------------------------------------------------------------------------
@@ -150,7 +149,6 @@ const App = () => {
 
 		if (response && response.data.status === 200) {
 			const currentDateTime = response.data.data;
-			console.log(typeof(response.data.data),response.data.data)
 			return currentDateTime;
 		} else {
 			throw new Error('Failed to fetch current time');
@@ -242,7 +240,6 @@ const App = () => {
 									path={RouterPath.Regions}
 									element={<Regions />}
 								/>
-								
 								<Route
 									path={RouterPath.HireSlip}
 									element={<HireSlip />}

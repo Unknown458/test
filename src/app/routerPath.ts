@@ -9,7 +9,6 @@ enum RouterPath {
 	GoodsTypes = '/goods-types',
 	ArticleShapes = '/article-shapes',
 	Regions = '/regions',
-	Product = '/product',
 	Users = '/users',
 	Consignors = '/consignors',
 	Consignees = '/consignees',

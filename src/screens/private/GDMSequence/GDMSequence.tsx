@@ -555,7 +555,7 @@ const LDMSequence = memo(() => {
         muiTableFooterCellProps: { align: "left" },
         accessorFn: (row) =>
           `${
-            findObjectInArray(billTypes, "billTypeId", row.billTypeId).billType 
+            findObjectInArray(billTypes, "billTypeId", row.billTypeId).billType
           }`,
       },
       {

@@ -272,9 +272,7 @@ const navigation: NavigationScopeInterface[] = [
             label: 'Masters',
             routes: [
                 { icon: <PlaceOutlined />, label: 'Regions', route: RouterPath.Regions },
-                
-								
-				{
+                {
 					icon: <ReceiptOutlined />,
 					label: 'Branches',
 					route: RouterPath.Branches,
