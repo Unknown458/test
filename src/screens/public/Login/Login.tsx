@@ -45,36 +45,36 @@ const Login = () => {
 		document.title = `${title} • ${AppDetails.Title}`;
 	}, []);
 
-	const handleCaptchaChange = async (token: string | null) => {
-		if (token) {
-			setRecaptchaToken(token);
+	// const handleCaptchaChange = async (token: string | null) => {
+	// 	if (token) {
+	// 		setRecaptchaToken(token);
 
-			const isVerified = await verifyCaptcha(token);
+	// 		const isVerified = await verifyCaptcha(token);
 
-			if (isVerified) {
-				setIsRecaptchaVerified(true);
-			} else {
-				resetCaptcha();
-			}
-		}
-	};
+	// 		if (isVerified) {
+	// 			setIsRecaptchaVerified(true);
+	// 		} else {
+	// 			resetCaptcha();
+	// 		}
+	// 	}
+	// };
 
-	const resetCaptcha = () => {
-		setRecaptchaToken('');
-		setIsRecaptchaVerified(false);
+	// const resetCaptcha = () => {
+	// 	setRecaptchaToken('');
+	// 	setIsRecaptchaVerified(false);
 
-		if (recaptchaRef.current) {
-			recaptchaRef.current.reset();
-		}
-	};
+	// 	if (recaptchaRef.current) {
+	// 		recaptchaRef.current.reset();
+	// 	}
+	// };
 
-	const handleCaptchaExpiry = () => {
-		setRecaptchaToken('');
-	};
+	// const handleCaptchaExpiry = () => {
+	// 	setRecaptchaToken('');
+	// };
 
-	const handleCaptchaError = () => {
-		setRecaptchaToken('');
-	};
+	// const handleCaptchaError = () => {
+	// 	setRecaptchaToken('');
+	// };
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -168,7 +168,7 @@ const Login = () => {
 				}
 
 				setLoading(false);
-				resetCaptcha();
+				
 			} else {
 				handleLogout();
 				alert('reCAPTCHA token not available');
@@ -287,9 +287,7 @@ const Login = () => {
 				<ReCAPTCHA
 					ref={recaptchaRef}
 					sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-					onChange={handleCaptchaChange}
-					onExpired={handleCaptchaExpiry}
-					onError={handleCaptchaError}
+					
 				/>
 			</div>
 			<div
